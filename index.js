@@ -87,6 +87,17 @@ async function generateGeminiResponse(prompt) {
   try {
     // 모든 텍스트를 소문자로 변환하여 비교
     const lowerPrompt = prompt.toLowerCase();
+    // NEW 섹션 보기 명령어 처리
+    if ((lowerPrompt.includes('new') || lowerPrompt.includes('뉴') || lowerPrompt.includes('새 상품')) 
+      && (lowerPrompt.includes('보여줘') || lowerPrompt.includes('알려줘'))) {
+    return "네, NEW 상품 섹션으로 이동하겠습니다.";
+    }
+    
+    // 인기 상품 섹션 보기 명령어 처리
+    if ((lowerPrompt.includes('인기') || lowerPrompt.includes('인기 상품')) 
+        && (lowerPrompt.includes('보여줘') || lowerPrompt.includes('알려줘'))) {
+      return "네, 인기 상품 섹션으로 이동하겠습니다.";
+    }
     // A상품 정보 보기 명령어 처리
     if ((lowerPrompt.includes('정보') || lowerPrompt.includes('보여줘') || lowerPrompt.includes('알려줘')) 
       && (lowerPrompt.includes('a상품') || lowerPrompt.includes('에이상품') || lowerPrompt.includes('a 상품') || lowerPrompt.includes('에이 상품'))) {
